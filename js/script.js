@@ -9,6 +9,26 @@ $(document).ready(function () {
   let searchInput = $("#search-input");
   let searchForm = $("#search-form");
 
+
+	function currentLocation(position){
+		let latitude = position.lat;
+		let longitude = position.lon;
+		let city = position.name;
+		let geoUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+		$.ajax({
+			url: geoUrl,
+			method: 'GET',
+		}).then(function(response){
+			console.log(response);
+			// getForecastNow(city, response.list[0]);
+			// getNextDayForecast(response.list);
+		});
+	}
+
+
+
+
+
   function updateSearchHistory(searchValue) {
     let storedSearchHistory = localStorage.getItem("searchHistory");
     if (!storedSearchHistory) {
