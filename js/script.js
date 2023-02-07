@@ -6,6 +6,8 @@ $(document).ready(function () {
   let apiKey = "baad171896e0c3b36f831a6990f30812";
 	let searchHistory = [];
 	historyList = $('#history');
+	let searchInput = $('#search-input');
+	let searchForm = $('#search-form');
 
 
 
@@ -32,12 +34,20 @@ $(document).ready(function () {
 		historyList.on('click', '.history-btn', function(){
 			let searchValue = $(this).attr('data-search');
 			GeolocationCoordinates(searchValue);
-		})
+		});
   }
 
+	function handleSubmit(event){
+		event.preventDefault();
+		let searchValue = searchInput.val().trim();
+		if(searchValue){
+			GeolocationCoordinates(searchValue);
+			searchInput.val('');
+		}
+	}
 
-
-
+	displaySearchHistory();
+	searchForm.on('submit', handleSubmit);
 
 
 });
