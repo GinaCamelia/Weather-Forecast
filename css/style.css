@@ -6,7 +6,7 @@
 
 body {
   max-width: 1000px;
-  height: auto;
+  height: 1200px;
   margin: 0 auto !important;
   background: var(--background);
   font-family: "Source Serif Pro", serif;
@@ -29,13 +29,12 @@ body {
   width: 300px;
 }
 
-/* Main row */
-
-#forecast-day {
-  display: flex;
-  flex-wrap: wrap !important;
-  align-content: center;
+.list-group#history  {
+	display: inline-block;
+	margin: 0 auto!important;
 }
+
+/* Main row */
 
 .list-group-item {
 	border: none!important
@@ -53,11 +52,6 @@ body {
 	font-size: 30px;
 	line-height: 40px;
 	margin-top: 6px;
-}
-
-.list-group#history  {
-	display: inline-block;
-	margin: 0 auto!important;
 }
 
 #weather-icon, .description {
