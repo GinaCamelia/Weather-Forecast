@@ -9,7 +9,7 @@ $(document).ready(function () {
   let searchInput = $("#search-input");
   let searchForm = $("#search-form");
 
-	
+
 
 
 	function GeolocationCoordinates(searchValue){
@@ -30,6 +30,33 @@ $(document).ready(function () {
 		});
 	}
 
+	function getForecastNow(city, data) {
+		$('.city').text(`${city}`);
+
+		let celsius = Math.floor(data.main.temp);
+		$('#celsius-temp').text(`${celsius}℃`);
+		
+		let iconCode = data.weather[0].icon;
+		let iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+		$("#weather-icon").html("");
+    $("#weather-icon").append(`<img src="${iconUrl}" alt="Weather Icon">`);
+    $(".description")
+      .text(data.weather[0].description)
+      .css("display", "block", "margin-left", "auto");
+
+		let humidity = data.main.humidity;
+		$('#humidity').text(`🔥 Humidity: ${humidity}%`);
+
+		let wind = Math.floor(data.wind.speed);
+		$('#wind').text(`💨 Wind: ${wind}Km/H`);
+
+		let feelsLike = Math.floor(data.main.feels_like);
+		$('#feels-like').text(`🌡️ Feels like: ${feelsLike} ℃`);
+
+		let pressure = data.main.pressure;
+		$('#pressure').text(`⤵ Pressure: ${pressure} hPa`);
+	}
+
 	function currentLocation(position){
 		let latitude = position.lat;
 		let longitude = position.lon;
@@ -40,7 +67,7 @@ $(document).ready(function () {
 			method: 'GET',
 		}).then(function(response){
 			console.log(response);
-			// getForecastNow(city, response.list[0]);
+			getForecastNow(city, response.list[0]);
 			// getNextDayForecast(response.list);
 		});
 	}
