@@ -1,12 +1,71 @@
 :root {
-    --background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+  --background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Source+Serif+Pro:wght@200;300;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Source+Serif+Pro:wght@200;300;600&display=swap");
 
 body {
-    max-width: 1000px;
-    height: auto;
-    margin: 0 auto!important;
-    background: var(--background);
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto !important;
+  background: var(--background);
+  font-family: "Source Serif Pro", serif;
+  font-weight: 200;
+}
+
+/* Header styling*/
+.weather-header {
+  background: transparent;
+  border-radius: 5px;
+}
+
+/* Search engine */
+#search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-search {
+  width: 300px;
+}
+
+/* Main row */
+
+#forecast-day {
+  display: flex;
+  flex-wrap: wrap !important;
+  align-content: center;
+}
+
+.list-group-item {
+	border: none!important
+}
+
+.main-row h1{
+	margin-left: 20px;
+}
+
+.description {
+	text-transform: capitalize;
+}
+
+#celsius-temp {
+	font-size: 30px;
+	line-height: 40px;
+	margin-top: 6px;
+}
+
+.list-group#history  {
+	display: inline-block;
+	margin: 0 auto!important;
+}
+
+/* 5 day forecast */
+#weather-forecast{
+	display: none;
+}
+
+.icon-url {
+	display: block;
+	margin: 0 auto;
 }
