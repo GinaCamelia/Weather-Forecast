@@ -1,0 +1,12 @@
+:root {
+    --background: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Source+Serif+Pro:wght@200;300;600&display=swap');
+
+body {
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto!important;
+    background: var(--background);
+}
