@@ -60,6 +60,11 @@ body {
 	margin: 0 auto!important;
 }
 
+#weather-icon, .description {
+  padding: 0;
+}
+
+
 /* 5 day forecast */
 #weather-forecast{
 	display: none;
