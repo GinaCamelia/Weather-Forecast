@@ -6,7 +6,6 @@
 
 body {
   max-width: 1000px;
-  height: 1200px;
   margin: 0 auto !important;
   background: var(--background);
   font-family: "Source Serif Pro", serif;
