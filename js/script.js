@@ -10,7 +10,7 @@ $(document).ready(function () {
   let searchForm = $("#search-form");
 
   function GeolocationCoordinates(searchValue) {
-    let coordsUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=50&appid=${apiKey}&units=${units}`;
+    let coordsUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=50&appid=${apiKey}&units=${units}`;
     console.log(coordsUrl);
     $.ajax({
       url: coordsUrl,
@@ -54,45 +54,45 @@ $(document).ready(function () {
     $("#pressure").text(`⤵ Pressure: ${pressure} hPa`);
   }
 
-	function getNextDayForecast(data){
-		let futureForecast = data.filter(function(forecast){
-			return forecast.dt_txt.includes('12:00');
-		});
+  function getNextDayForecast(data) {
+    let futureForecast = data.filter(function (forecast) {
+      return forecast.dt_txt.includes("12:00");
+    });
 
-		let forecastArray = futureForecast.slice(0, 6);
-		console.log(forecastArray);
-		$('#weather-forecast').siblings().remove();
-		for(let i = 0; i < forecastArray.length; i++){
-			let forecast = forecastArray[i];
-			let card = $('#weather-forecast').clone();
-			let iconUrl =`http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
-			card.find('.icon-url').attr('src', iconUrl);
+    let forecastArray = futureForecast.slice(0, 6);
+    console.log(forecastArray);
+    $("#weather-forecast").siblings().remove();
+    for (let i = 0; i < forecastArray.length; i++) {
+      let forecast = forecastArray[i];
+      let card = $("#weather-forecast").clone();
+      let iconUrl = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+      card.find(".icon-url").attr("src", iconUrl);
 
-			let date = moment(forecast.dt_txt).format('DD/MM/YYYY');
-			card.find('#forecast-day').text(date);
+      let date = moment(forecast.dt_txt).format("DD/MM/YYYY");
+      card.find("#forecast-day").text(date);
 
-			let minTemp = Math.floor(forecast.main.temp_min);
-      card.find('#min-temp').text(`Min temp: ${minTemp} ºC `);
-      
+      let minTemp = Math.floor(forecast.main.temp_min);
+      card.find("#min-temp").text(`Min temp: ${minTemp} ºC `);
+
       let maxTemp = Math.floor(forecast.main.temp_max);
-      card.find('#max-temp').text(`Max temp: ${maxTemp} ºC`);
+      card.find("#max-temp").text(`Max temp: ${maxTemp} ºC`);
 
       let windInfo = Math.floor(forecast.wind.speed);
-      card.find('#wind-info').text(`Wind: ${windInfo} Km/H`);
+      card.find("#wind-info").text(`Wind: ${windInfo} Km/H`);
 
       let humidityInfo = Math.floor(forecast.main.humidity);
-      card.find('#humidity-info').text(`Humidity: ${humidityInfo} %`);
+      card.find("#humidity-info").text(`Humidity: ${humidityInfo} %`);
 
-      card.removeAttr('id');
-      $('#weather-forecast').before(card);
-		}
-	}
+      card.removeAttr("id");
+      $("#weather-forecast").before(card);
+    }
+  }
 
   function currentLocation(position) {
     let latitude = position.lat;
     let longitude = position.lon;
     let city = position.name;
-    let geoUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+    let geoUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
     $.ajax({
       url: geoUrl,
       method: "GET",
@@ -138,7 +138,7 @@ $(document).ready(function () {
         .text(searchHistory[i])
         .css("margin-right", "10px");
       // appends the button to the historyList element.
-      historyList.append(historyBtn).css('text-align', 'center');
+      historyList.append(historyBtn).css("text-align", "center");
     }
     historyList.on("click", ".history-btn", function () {
       let searchValue = $(this).attr("data-search");
