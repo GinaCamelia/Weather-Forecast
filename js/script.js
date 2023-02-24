@@ -10,7 +10,7 @@ $(document).ready(function () {
   let searchForm = $("#search-form");
 
   function GeolocationCoordinates(searchValue) {
-    let coordsUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=50&appid=${apiKey}&units=${units}`;
+    let coordsUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=50&appid=${apiKey}&units=${units}`;
     console.log(coordsUrl);
     $.ajax({
       url: coordsUrl,
@@ -34,7 +34,7 @@ $(document).ready(function () {
     $("#celsius-temp").text(`${celsius}℃`);
 
     let iconCode = data.weather[0].icon;
-    let iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    let iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
     $("#weather-icon").html("");
     $("#weather-icon").append(`<img src="${iconUrl}" alt="Weather Icon">`);
     $(".description")
@@ -65,7 +65,7 @@ $(document).ready(function () {
     for (let i = 0; i < forecastArray.length; i++) {
       let forecast = forecastArray[i];
       let card = $("#weather-forecast").clone();
-      let iconUrl = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
+      let iconUrl = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
       card.find(".icon-url").attr("src", iconUrl);
 
       let date = moment(forecast.dt_txt).format("DD/MM/YYYY");
