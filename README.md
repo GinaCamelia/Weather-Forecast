@@ -23,7 +23,7 @@ This is a weather app that uses the OpenWeather API to display the current weath
 * The search history will be saved and displayed in the history section.
 
 ## Usage
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions](./resources/weather-forecast.png);
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions](./resources/weather-forecast.png)
 
 Deployed link: https://superlative-mooncake-eaecf4.netlify.app/
 
